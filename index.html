@@ -1,0 +1,12 @@
+<body>
+  <base href="/">
+  <main id="letsrun" ng-app="letsrun" ng-strict-di>
+    <div ng-include="'client/header.html'"></div>
+    <div ng-include="'client/menu.html'"></div>
+
+    <div ui-view></div>
+
+    <div ng-include="'client/footer.html'"></div>
+    <div ng-include="'client/modals.html'"></div>
+  </main>
+</body>

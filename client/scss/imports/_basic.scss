@@ -1,0 +1,687 @@
+@charset "utf-8";
+
+/*----------------------------angular clock-fix------------------------------*/
+
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+
+/*----------------------------html------------------------------*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  position: relative;
+  min-height: 100%;
+  max-width: 100% !important;
+  overflow-x: hidden;
+}
+
+/*----------------------------body------------------------------*/
+body{
+  color: $color-text;
+  background-color: #fff;
+  font-family: 'Circe', sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  margin: 0;
+  padding: 0 0 447px;
+  overflow-x: hidden;
+}
+
+/*------------------------containers--------------------------*/
+.container{
+  width: 960px;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.container-form{
+  width: 625px;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.container-form-small{
+  width: 300px;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.container-big{
+  width: 624px;
+  float: left;
+}
+
+.container-small{
+  width: 288px;
+  float: right;
+}
+
+/*------------------------clearfix--------------------------*/
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/*----------------------------text------------------------------*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 25px 0;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 36px;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: 300;
+  margin: 23px 0;
+}
+
+p:last-child {
+//  margin: 0;
+}
+
+ol.text{
+  margin: 0 0 0 20px;
+  padding: 0;
+
+  li{
+    font-size: 15px;
+    line-height: 23px;
+    font-weight: 300;
+    margin: 23px 0;
+    padding-left: 10px;
+  }
+}
+
+a,
+button,
+input,
+textarea,
+select{
+  outline: 0 !important;
+  cursor: pointer !important;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+::selection
+{
+  background: $color-primary;
+  color: #fff;
+}
+
+::-moz-selection
+{
+  background: $color-primary;
+  color: #fff;
+}
+
+/*----------------------------sections------------------------------*/
+section{
+  margin: 60px 0;
+  display: inline-block;
+  width: 100%;
+}
+
+section.basic{
+  display: block;
+  width: 100%;
+}
+
+section.text{
+  margin: 30px 0;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0;
+  }
+}
+
+section:first-child{
+  margin-top: 60px;
+}
+
+section:last-child{
+  margin-bottom: 0;
+}
+
+/*----------------------------links & buttons------------------------------*/
+a {
+  text-decoration: none;
+  color: $color-primary;
+}
+
+a:hover{
+  color: $color-secondary;
+}
+
+a.btn,
+button{
+  display: inline-block;
+  color: #fff;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer !important;
+  margin: 0;
+  background: $color-secondary;
+  padding: 12px 21px 10px 20px;
+  border: 1px solid $color-secondary;
+  letter-spacing: 1px;
+  text-align: center;
+  box-sizing: border-box;
+
+  &.disabled {
+    background: #bdbdbd;
+    border: 1px solid #b1b1b1;
+  }
+}
+
+a.btn.has-ripple {
+  position: static !important;
+}
+
+a.btn:hover{
+  color: #fff;
+}
+
+.btn.btn-bordered{
+  background: transparent none repeat scroll 0 0;
+  border: 1px solid transparent;
+}
+
+.btn.btn-large{
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: bold;
+  padding: 13px 41px 12px;
+  border-width: 2px;
+  margin: 0 0 30px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+a.more-arrow{
+  display: inline-block;
+  box-sizing: border-box;
+  height: 20px;
+  width: 20px;
+  background: transparent url("/img/more_arrow.png") no-repeat 50% 50%;
+}
+
+a.arrow-right-with-text{
+  display: inline-block;
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: bold;
+  box-sizing: border-box;
+  min-height: 43px;
+  padding: 0 43px 0 0;
+  background: transparent url("/img/arrow_icon.png") no-repeat 100% 0;
+}
+
+.btn-show-all{
+  width: 100%;
+  color: $color-show-more !important;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 12px 10px 9px;
+  background: $color-gray-light !important;
+  border: 1px solid $color-show-more-border !important;
+  margin: 30px 0 0;
+}
+
+.btn-arrow-left{
+  width: 29px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent url("/img/carousel_arrows.png") no-repeat scroll 0 top;
+}
+
+.btn-arrow-left.disabled{
+  background: transparent url("/img/carousel_arrows.png") no-repeat scroll 0 -28px;
+}
+
+.btn-arrow-right{
+  width: 29px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent url("/img/carousel_arrows.png") no-repeat scroll -29px top;
+}
+
+.btn-arrow-right.disabled{
+  background: transparent url("/img/carousel_arrows.png") no-repeat scroll -29px -28px;
+}
+
+.times{
+  padding: 0;
+  background: none;
+  border: 0;
+  color: $color-text;
+  font-size: 16px;
+}
+
+.pencil{
+  padding: 0;
+  border: 0;
+  color: $color-text;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  background: transparent url("/img/edit_icon.png") no-repeat 50% 50%;
+}
+
+.trashcan{
+  padding: 0;
+  border: 0;
+  width: 16px;
+  height: 16px;
+  background: transparent url("/img/remove_icon.png") no-repeat 50% 50%;
+}
+
+a.setperiod{
+  font-weight: bold;
+  padding: 0 0 0 22px;
+  background: transparent url("/img/calendar_icon.png") no-repeat scroll left top;
+}
+
+
+/*-----------------------ticon button--------------------------*/
+.tcon {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $tcon-size;
+  transition: $tcon-transition;
+  user-select: none;
+  width: $tcon-size;
+  background: transparent;
+  outline: none;
+
+  > * {
+    display: block;
+  }
+
+  &:hover,
+  &:focus {
+    outline: none; // see issue #36 https://github.com/grayghostvisuals/transformicons/issues/36
+  }
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+.tcon-menu__lines {
+  @include tcon-menu-lines;
+  position: relative;
+
+  &::before,
+  &::after {
+    @include tcon-menu-lines;
+    content: '';
+    position: absolute;
+    left: 0;
+    transform-origin: ($tcon-size / 14) center;
+    width: 100%;
+  }
+
+  &::before {
+    top: ($tcon-size / 4);
+  }
+
+  &::after {
+    top: -($tcon-size / 4);
+  }
+
+  .#{$tcon-jstransform} & {
+    transform: scale3d(.8, .8, .8);
+  }
+}
+
+.tcon-menu--xbutterfly {
+  width: auto;
+
+  .tcon-menu__lines {
+    &::before,
+    &::after {
+      transform-origin: 50% 50%;
+      transition: top .3s .6s ease, transform .3s ease;
+    }
+  }
+
+  &.#{$tcon-jstransform} {
+    .tcon-menu__lines {
+      background: transparent;
+
+      &::before,
+      &::after {
+        top: 0;
+        transition: top .3s ease, transform .3s .5s ease;
+        width: $tcon-size;
+      }
+
+      &::before {
+        transform: rotate3d(0, 0, 1, 45deg);
+      }
+
+      &::after {
+        transform: rotate3d(0, 0, 1, -45deg);
+      }
+    }
+  }
+}
+
+.tcon-visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+
+  &:active,
+  &:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+  }
+}
+
+/*-----------------------input & select & textarea--------------------------*/
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+input[type="time"],
+textarea,
+select{
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid $color-achievment-border;
+  height: 36px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+select:focus,
+textarea:focus{
+  border-color: $color-secondary;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+input[type="time"],
+select{
+  padding: 0 12px;
+  height: 36px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+option{
+  padding: 4px;
+  color: $color-primary;
+}
+
+// select2 selectize theme
+.ui-select-container {
+  display: inline-block;
+  font-size: 11px;
+
+  .selectize-input {
+    white-space: nowrap;
+    border: 1px solid $color-achievment-border !important;
+    background: #ffffff !important;
+    color: $color-text;
+    box-shadow: none !important;
+    border-radius: 0;
+    padding: 0 8px;
+    font-size: inherit;
+
+    &.selectize-focus {
+      border-color: $color-secondary !important;
+    }
+
+    & > div,
+    input {
+      width: 90% !important;
+      float: none !important;
+      text-align: left;
+      line-height: 36px;
+      height: 36px;
+      font-size: inherit;
+      letter-spacing: 0;
+      font-weight: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      vertical-align: middle;
+    }
+
+    span {
+      overflow: hidden;
+      width: 90%;
+      text-overflow: ellipsis;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+  }
+
+  .selectize-dropdown {
+    text-align: left;
+    border-color: $color-achievment-border !important;
+    margin-top: -5px;
+    top: auto !important;
+        font-size: inherit;
+
+    .active {
+      color:   $color-primary;
+      background: $color-achievment-border;
+    }
+
+    .ui-select-choices-row {
+          font-size: inherit;
+    }
+  }
+}
+
+// helper
+.help-block {
+  color: $color-error;
+}
+
+/*--------------------------radio $ checkboxes-----------------------------*/
+
+input[type=radio],
+input[type=checkbox] {
+  display: none;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  vertical-align: middle;
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+  font-weight: 300;
+  color: $color-checkbox-gray;
+  font-size: 15px;
+}
+
+input[type="radio"] + label::before,
+input[type="checkbox"] + label::before {
+  content: "";
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+input[type="checkbox"] + label::before {
+  background-color: #fff;
+  border: 2px solid $color-filter-button;
+  border-radius: 2px;
+  width: 14px;
+  height: 14px;
+}
+
+input[type="checkbox"]:checked + label::before {
+  background: url('/img/checkbox_bg.png') no-repeat 1px 1px #fff;
+}
+
+input[type="radio"] + label::before {
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: $color-gray-border;
+  border: 4px solid $color-gray-border;
+}
+
+input[type="radio"] + label.inverted::before {
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  border: 3px solid #fff;
+  -webkit-box-shadow: 0 0 0 1px $color-filter-button;
+  box-shadow: 0 0 0 1px $color-filter-button;
+}
+
+input[type="radio"]:checked + label::before {
+  background-color: $color-footer-border;
+}
+
+/*------------------------dirty invalid input--------------------------*/
+input.ng-dirty.ng-invalid {
+  border: 1px solid #ff4747;
+}
+
+
+/*------------------------jcarousel--------------------------*/
+.jcarousel {
+  position: relative;
+  overflow: hidden;
+
+  ul {
+    width: 20000em;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      float: left;
+    }
+  }
+}
+
+/*-----------------------------------------datepicker-------------------------------------------*/
+#ui-datepicker-div{
+  //width: 250px !important;
+  .ui-datepicker-header{
+    background-color: #F0F1F5;
+    .ui-datepicker-title{
+      select {
+        height: auto;
+        padding: 4px;
+        margin: 1px;
+      }
+    }
+
+    .ui-datepicker-prev{
+      float: left;
+      margin: 3px 0 0 6px;
+      background: url('/img/caret-left.png') no-repeat 50% 50%;
+    }
+
+    .ui-datepicker-next{
+      float: right;
+      margin: 3px 6px 0 0;
+      background: url('/img/caret-right.png') no-repeat 50% 50%;
+    }
+  }
+
+  .ui-datepicker-calendar{
+    td{
+      a{
+        color: $color-primary;
+        text-align: center;
+      }
+
+      a:hover{
+        color: $color-secondary;
+      }
+    }
+
+    .ui-datepicker-today{
+      background-color: #fff;
+    }
+  }
+}

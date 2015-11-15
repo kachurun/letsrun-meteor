@@ -1,0 +1,173 @@
+$color-text: #424242;
+$color-primary: #314099;
+$color-secondary: #F79700;
+$color-attention: #DF1717;
+$color-success: #00ae66;
+$color-error: #FF7F7F;
+
+$color-footer: #32364B;
+$color-footer-light: #3A3E52;
+$color-gray-paragraph: #484C62;
+$color-socials: #4c5061;
+$color-footer-border: #53576F;
+$color-clubs-quantity: #616474;
+$color-checkbox-gray: #6d7082;
+$color-show-more: #2E3F9C;
+$color-blue-paragraph: #2D3D97;
+$color-mobile-menu: #525d8a;
+$color-filter-text: #8b91bd;
+$color-header-button-border: #9099c8;
+$color-text-light: #9597A3;
+$color-city-gray: #aeb0be;
+$color-show-more-border: #D0D3DE;
+$color-edit-indicator: #d8d9e2;
+$color-user-info-border: #dadee3;
+$color-filter-button: #cdd0e1;
+$color-gray-border: #e2e2e2;
+$color-achievment-border: #E5E5E5;
+$color-gray-light: #F0F1F5;
+$color-gray-section: #F4F5F9;
+$color-header-border: #f5f6f9;
+$color-calendar-filter-button: #f3f4f8;
+
+$color-fb: #3A5795;
+$color-vk: #45688E;
+
+$color-event-my: #574278;
+$color-event-club: #5CB85C;
+$color-event-default: #3B91AD;
+
+$tcon-size: 32px !default;
+$tcon-transition: .3s !default;
+$tcon-jstransform: 'tcon-transform' !default;
+
+$tcon-menu-radius: ($tcon-size / 14) !default;
+$tcon-menu-color: $color-primary !default;
+$tcon-menu-arrowleft-transformation: (
+        transform: scale3d(.8, .8, .8) rotate3d(0, 0, 1, 90deg)
+) !default;
+$tcon-menu-arrow360left-transformation: (
+        transform: scale3d(.8, .8, .8) rotate3d(0, 0, 1, 360deg)
+) !default;
+
+@mixin tcon-menu-lines {
+  display: inline-block;
+  height: ($tcon-size / 7);
+  width: $tcon-size;
+  border-radius: $tcon-menu-radius;
+  transition: $tcon-transition;
+  background: $tcon-menu-color;
+}
+
+@mixin edit-indicator($top){
+  position: relative;
+
+  .edit-indicator {
+    position: absolute;
+    z-index: 100;
+    top: $top;
+    right: 0;
+    font-size: 13px;
+    line-height: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 300;
+    color: $color-edit-indicator;
+  }
+}
+
+@mixin square-responsive-img($px){
+
+  .img-holder{
+    display: table;
+    width: $px;
+    height: $px;
+
+    a{
+      position: relative;
+      display: table-cell;
+      width: $px;
+      height: $px;
+      text-align: center;
+      vertical-align: middle;
+
+      img{
+        max-width: $px;
+        max-height: $px;
+        padding: 0;
+        margin: 0;
+        border: 0;
+      }
+    }
+  }
+}
+
+@mixin clearfix() {
+
+  &::before {
+    content: "";
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
+@mixin content-justify() {
+  text-align: justify;
+  line-height: 0;
+  font-size: 1px;
+  zoom: 1;
+
+  &::after {
+    width: 100%;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    content: '';
+    display: inline-block;
+  }
+}
+
+@mixin content-justify-child{
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+}
+
+@mixin vertical-align() {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@-webkit-keyframes sk-cubemove {
+  25% { -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5) }
+  50% { -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg) }
+  75% { -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5) }
+  100% { -webkit-transform: rotate(-360deg) }
+}
+
+@keyframes sk-cubemove {
+  25% {
+    transform: translateX(42px) rotate(-90deg) scale(0.5);
+    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+  } 50% {
+    transform: translateX(42px) translateY(42px) rotate(-179deg);
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
+  } 50.1% {
+    transform: translateX(42px) translateY(42px) rotate(-180deg);
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+  } 75% {
+    transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+  } 100% {
+    transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
+  }
+}

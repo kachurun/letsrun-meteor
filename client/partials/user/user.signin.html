@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="help-page sign-in">
+
+    <h1>Авторизоваться</h1>
+
+    <div id="w2" class="auth-clients">
+      <div class="socials">
+        <a class="btn btn-sign-in vk"  ng-click="sign.external.vk();"><i class="fa fa-vk"></i> Войти с помощью VKontakte</a>
+        <a class="btn btn-sign-in fb" ng-click="sign.external.fb();"><i class="fa fa-facebook-official"></i> Войти с помощью Facebook</a>
+        <a class="btn btn-sign-in instagram" ng-click="sign.external.instagram();"><i class="fa fa-instagram"></i> Войти с помощью Instagram</a>
+      </div>
+    </div>
+    <form id="login-form" name="signInForm" ng-submit="sign.actions.signIn();">
+      <h5>Вход через электронную почту</h5>
+
+      <input type="email"
+              id="login-form-login"
+              name="login-form[login]"
+              placeholder="Электронная почта"
+              autofocus="autofocus"
+              ng-model="sign.credentials.email">
+
+      <input type="password"
+              id="login-form-password"
+              name="login-form[password]"
+              placeholder="Пароль"
+              ng-model="sign.credentials.password">
+
+      <input type="checkbox"
+              id="rememder-me"
+              name="login-form[rememberMe]"
+              ng-model="sign.credentials.remember">
+
+      <label for="rememder-me">Запомнить меня</label>
+
+      <button type="submit" class="btn" ng-disabled="sign.signInForm.$invalid()">Войти</button>
+    </form>
+    <p class="text-center">
+      <a ui-sref="user.signup">Нет аккаунта? Зарегистрируйтесь!</a> </p>
+
+  </div>
+</div>

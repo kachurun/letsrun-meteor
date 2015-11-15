@@ -1,0 +1,94 @@
+<nav class="navbar logged">
+  <div class="container">
+
+    <!-- logo -->
+    <div class="logo">
+      <a href="/">
+        <img src="/img/logo.png" class="img-responsive" alt="#LetsRun">
+      </a>
+    </div>
+
+    <!-- login -->
+    <a ng-hide="$root.currentUser" id="modal-sign-in" class="login hidden-xs summon-modal" ui-sref="user.signin">Войти</a>
+    <div ng-show="$root.currentUser" class="profile-block hidden-xs">
+      <!-- profile icon -->
+      <div class="profile-icon">
+
+        <a class="open-submenu">
+          <img src="/img/default-user.png">
+        </a>
+        <!-- profile submenu -->
+        <div class="submenu profile-submenu">
+          <a class="settings-link" href="/user/settings">Настройки</a>
+          <a class="logout-link" ui-sref="user.signout" data-method="post">Выйти</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- desktop links block -->
+    <ul class="nav topnav hidden-xs">
+      <li><a href="/">Главная</a></li>
+      <li ng-hide="$root.currentUser"><a href="/main">Календарь</a></li>
+      <li ng-show="$root.currentUser"><a href="/profile/9325">Профиль</a></li>
+      <li><a href="/people">Люди</a></li>
+      <li><a ui-sref="clubs.list">Клубы</a></li>
+      <li><a href="/main">Cобытия</a></li>
+      <li ng-show="$root.currentUser"><a href="/chat">Чат</a></li>
+      <li><a href="/page/aboutus">О движении</a></li>
+
+      <div class="clearfix"></div>
+    </ul>
+
+    <!-- mobile menu toggle button -->
+    <button type="button" class="tcon tcon-menu--xbutterfly visible-xs" aria-label="toggle menu">
+      <span class="tcon-menu__lines" aria-hidden="true"></span>
+      <span class="tcon-visuallyhidden">toggle menu</span>
+    </button>
+
+    <!-- mobile devices links block -->
+    <div class="topnav-mobile-holder">
+      <ul class="nav topnav topnav-mobile visible-xs">
+
+        <li ng-show="$root.currentUser" class="profile-block">
+
+          <!-- profile info -->
+          <div class="profile-info">
+            <div class="profile-icon">
+              <a href="/profile/update">
+                <img src="/img/default-user.png">
+              </a>
+            </div>
+
+            <a class="name" href="/profile">Max</a>
+            <!-- logout button -->
+            <a class="exit" ui-sref="user.signout" data-method="post"></a>
+          </div>
+
+          <!-- messages block -->
+          <div class="messages">
+            <span>Сообщения</span>
+            <span class="counter">1</span>
+          </div>
+
+          <!-- notices block -->
+
+          <div class="clearfix"></div>
+        </li>
+        <!-- links block -->
+        <li><a href="/">Главная</a></li>
+        <li ng-show="$root.currentUser"><a href="/profile">Профиль</a></li>
+        <li ng-hide="$root.currentUser"><a href="/main">Календарь</a></li>
+        <li><a href="/people">Люди</a></li>
+        <li><a ui-sref="clubs.list">Клубы</a></li>
+        <li><a href="/events">Cобытия</a></li>
+        <li ng-hide="$root.currentUser"><a href="/events">Чат</a></li>
+        <li><a href="/about">О движении</a></li>
+
+        <li ng-hide="$root.currentUser" class="login-holder"><a id="modal-sign-in" class="login summon-modal" ui-sref="user.signin">Войти</a></li>
+      </ul>
+    </div>
+
+    <div class="clearfix"></div>
+  </div>
+</nav>

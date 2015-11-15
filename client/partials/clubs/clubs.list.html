@@ -1,0 +1,11 @@
+<p>club list page</p>
+
+
+<ul class="clubs-list">
+  <li ng-repeat="club in clubs.list">
+    <div>
+      <a ui-sref='clubs.detailed({clubId: club._id})' ng-bind="club.name"></a>
+      <span ng-bind="club.description"></span>
+    </div>
+  </li>
+</ul>

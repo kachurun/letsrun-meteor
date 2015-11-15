@@ -1,0 +1,8 @@
+<p>Club detail view</p>
+<a ui-sref='clubs.list({})'>Back to list</a>
+
+<input type="text" ng-model="club.item.name">
+<input type="text" ng-model="club.item.description">
+
+<input type="button" ng-click="club.actions.save();" value="Save">
+<input type="button" ng-click="club.actions.reset();" value="Reset form">
