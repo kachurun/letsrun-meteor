@@ -1,25 +1,38 @@
-<div class="container">
+
   <div class="help-page sign-up">
     <h1>Зарегистрироваться</h1>
     <form id="registration-form" name="signUpForm" ng-submit="sign.actions.signUp();">
-      <div class="form-group field-register-form-middle_name required">
+      <div class="form-group field-register-form-middle_name">
         <label class="control-label" for="register-form-middle_name">Как вас зовут?</label>
-        <input type="text" id="register-form-middle_name" class="form-control" ng-model="sign.credentials.profile.name" required="required">
+        <input type="text" id="register-form-middle_name" class="form-control" ng-minlength="2" ng-model="sign.credentials.profile.name" required="required">
+        <span class="ng-form-error">Введите корректное имя</span>
       </div>
+
+      <div class="form-group field-register-form-gender">
+        <label class="control-label" for="register-form-gender">Ваш пол</label>
+        <input type="radio" name="male" id="register-form-gender-male" ng-model="sign.credentials.profile.gender" value="2">
+        <label for="register-form-gender-male">Мужской</label>
+        <input type="radio" name="female" id="register-form-gender-female" ng-model="sign.credentials.profile.gender" value="1">
+        <label for="register-form-gender-female">Женский</label>
+      </div>
+
       <div class="form-group field-register-form-email">
         <label class="control-label" for="register-form-email">Электронная почта</label>
-        <input type="text" id="register-form-email" class="form-control" ng-model="sign.credentials.email" required="required">
+        <input type="email" id="register-form-email" class="form-control" ng-model="sign.credentials.email" required="required">
+        <span class="ng-form-error">Введите корректный адрес эл.почты</span>
       </div>
-      <div class="form-group field-register-form-password required has-error">
+
+      <div class="form-group field-register-form-password">
         <label class="control-label" for="register-form-password">Пароль</label>
-        <input type="password" id="register-form-password" class="form-control" ng-model="sign.credentials.password" required="required">
+        <input type="password" id="register-form-password" class="form-control" ng-minlength="6" ng-model="sign.credentials.password" required="required">
+        <span class="ng-form-error">Минимальная длинна пароля 6 символов</span>
       </div>
-      <div class="help-block" ng-bind="sign.error"></div>
-      <button type="submit" class="btn btn-success btn-block" ng-disabled="sign.signUpForm.$invalid()">Зарегистрироваться</button>
+
+      <div class="help-block" ng-if="sign.error.length" ng-bind="sign.error"></div>
+      <button type="submit" class="btn btn-success btn-block" ng-disabled="signUpForm.$invalid">Зарегистрироваться</button>
     </form>
 
     <p class="text-center">
       <a ui-sref="user.signin">Уже зарегистрированы? Авторизуйтесь!</a>
     </p>
   </div>
-</div>

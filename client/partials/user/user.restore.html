@@ -1,0 +1,24 @@
+
+  <div class="help-page restore">
+    <h1>Восстановить пароль</h1>
+
+    <form id="password-recovery-form" name="forgotForm" ng-if="sign.restore.state === 0" ng-submit="sign.actions.forgotPassword();">
+      <div class="form-group field-recovery-form-email" >
+        <label class="control-label" for="recovery-form-email">Электронный адрес</label>
+        <input type="text" id="recovery-form-email" class="form-control" name="recovery-form[verify]" autofocus="autofocus" ng-model="sign.credentials.email">
+        <span class="ng-form-error">Введите корректный адрес эл.почты</span>
+      </div>
+
+      <div class="help-block" ng-if="sign.error.length" ng-bind="sign.error"></div>
+      <button type="submit" class="btn btn-primary btn-block" ng-disabled="forgotForm.$invalid">Продолжить</button>
+      <br>
+    </form>
+
+    <form id="password-recovery-form" name="forgotForm" ng-if="sign.restore.state === 1">
+      <div class="form-group field-recovery-form-email">
+        <p>Дальнейшие инструкции по восстановлению пароля отправлены на указанный адрес электронной почты</p>
+      </div>
+      <br>
+    </form>
+
+  </div>

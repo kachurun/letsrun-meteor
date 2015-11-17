@@ -2,7 +2,7 @@ angular.module('user.sign')
   .controller('SignController', SignController);
 
 
-function SignController($scope, $meteor, $state, $meteorUtils) {
+function SignController($scope, $rootScope, $meteor, $state, $meteorUtils, $timeout) {
   var vm = this;
 
   vm.credentials = {
@@ -11,9 +11,19 @@ function SignController($scope, $meteor, $state, $meteorUtils) {
     password: '',
     profile: {
       name: '',
-      gender: '',
+      gender: 1,
       locale: ''
     }
+  };
+
+  vm.verify = {
+    token: $state.params.token
+  };
+
+  vm.restore = {
+    token: $state.params.token,
+    state: 0,
+    newPassword: ''
   };
 
   vm.error = '';
@@ -42,17 +52,49 @@ function SignController($scope, $meteor, $state, $meteorUtils) {
           }
         );
       },
+      verifyEmail() {
+        $meteor.verifyEmail(vm.verify.token).then(
+          function() {
+            vm.error = '';
+            vm.verify.status = 1;
+          },
+          function(err) {
+            vm.error = 'Error sending forgot password email - ' + err;
+          }
+        );
+      },
 
-      resetPassword() {
+      forgotPassword() {
         $meteor.forgotPassword({
           email: vm.credentials.email
         }).then(
           function() {
             vm.error = '';
-            $state.go('user.signin');
+            vm.restore.state = 1;
           },
           function(err) {
             vm.error = 'Error sending forgot password email - ' + err;
+          }
+        );
+      },
+
+      restorePassword() {
+        if (vm.restore.newPassword.length < 6) {
+          vm.error = 'password-too-small';
+          return false;
+        }
+
+        $meteor.resetPassword(vm.restore.token, vm.restore.newPassword).then(
+          function() {
+            vm.error = '';
+            vm.restore.state = 1;
+            $timeout(() => {
+              $state.go('index');
+            }, 5000);
+          },
+          function(err) {
+            vm.restore.state = -1;
+            vm.error = 'Error  reset password - ' + err;
           }
         );
       },
@@ -66,36 +108,44 @@ function SignController($scope, $meteor, $state, $meteorUtils) {
       }
   };
 
+  // логин с помощью соц.сетей, создает пользователя, либо добавляет сервис в существующего
   vm.external = {
     fb() {
-        $meteor.loginWithFacebook({
+        let $signInWithFacebook = $meteorUtils.promissor(Meteor, 'signInWithFacebook');
+        $signInWithFacebook({
           requestPermissions: ['email', 'public_profile'],
           loginStyle: 'popup'
-        }).then(function() {
-          console.log('Login success');
-        }, function(err) {
-          console.log('Login error - ', err);
+        }, (error, mergedUserId) => {
+          if (mergedUserId) {
+            console.log(mergedUserId, 'merged with', Meteor.userId());
+          }
         });
       },
       vk() {
-        let $loginWithVk = $meteorUtils.promissor(Meteor, 'loginWithVk');
-        $loginWithVk({
+        let $signInWithVk = $meteorUtils.promissor(Meteor, 'signInWithVk');
+        $signInWithVk({
           requestPermissions: ['email', 'status', 'pages'],
           loginStyle: 'popup'
-        }).then(function() {
-          console.log('Login success');
-        }, function(err) {
-          console.log('Login error - ', err);
+        }, (error, mergedUserId) => {
+          if (mergedUserId) {
+            console.log(mergedUserId, 'merged with', Meteor.userId());
+          }
         });
       },
       instagram() {
-        let $loginWithInstagram = $meteorUtils.promissor(Meteor, 'loginWithInstagram');
-        $loginWithInstagram(function(err, res) {
-          if (err !== undefined)
-            console.log('Login success');
-          else
-            console.log('login error - ' + err);
+        let $signInWithInstagram = $meteorUtils.promissor(Meteor, 'signInWithInstagram');
+        $signInWithInstagram({}, (error, mergedUserId) => {
+          if (mergedUserId) {
+            console.log(mergedUserId, 'merged with', Meteor.userId());
+          }
         });
       }
   };
+
+  $rootScope.$on('$stateChangeStart',
+    function(event, toState, toParams, fromState, fromParams) {
+      // event.preventDefault();
+      vm.error = '';
+    });
+
 }

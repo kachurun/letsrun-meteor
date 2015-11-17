@@ -2215,7 +2215,7 @@
       line-height: 12px;
       display: block;
       width: 100%;
-      margin: 15px 0 7px !important;
+      margin: 15px 0 7px;
       padding: 0;
       text-transform: uppercase;
       color: $color-text-light;
@@ -2238,7 +2238,8 @@
     input[type='checkbox']+ label {
       font-size: 12px;
       display: inline-block;
-      margin: 0 0 14px;
+      margin: 2px 20px 7px 0;
+      width: auto;
     }
 
     button,
@@ -2316,10 +2317,54 @@
   }
 }
 
-/*----------------------------sign in modal------------------------------*/
+/*----------------------------sign in------------------------------*/
+.sign-in {
+  .socials{
+    margin: 0 0 30px;
+
+    .btn{
+      position: relative;
+      width: 100%;
+      margin: 14px 0 0;
+      text-align: left;
+      padding-left: 40px;
+      letter-spacing: 0;
+      border: 0;
+
+      .fa{
+        position: absolute;
+        top: 6px;
+        left: 8px;
+        font-size: 20px;
+      }
+    }
+
+    button:first-child{
+      margin: 0;
+    }
+  }
+}
+
 .modal-sign-in {
-  #forgot-password {
-    float: right;
+  .help-page {
+    width: auto;
+    margin: 0;
+
+    .signup,
+    .title {
+      display: none;
+    }
+    .socials {
+      .btn-sign-in::first-child {
+        margin-top: 0;
+      }
+    }
+    .text-center {
+      margin: 0;
+    }
+    input {
+      margin: 0;
+    }
   }
 }
 

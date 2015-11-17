@@ -125,6 +125,12 @@ function openModal(id) {
       }
     });
 
+    // Special Elements
+    var specials = '.modal-footer #sign-up-link';
+    $(specials).on('click', function(){
+      closeAllModals();
+    });
+
     /*--------------- TOGGLE ---------------*/
     // mobile menu open/close
     $('button.tcon').click(function() {
@@ -143,9 +149,9 @@ function openModal(id) {
   }); // onload
 })(jQuery); //anon
 
-function closeAllModals() {
+window.closeAllModals = function() {
   // for modals
   $('div.modal').fadeOut(300);
   // for widgets
   $('div.submenu').removeClass('active');
-}
+};

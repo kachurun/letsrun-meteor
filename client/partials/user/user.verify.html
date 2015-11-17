@@ -1,0 +1,23 @@
+
+  <div class="help-page request">
+    <h1>Подтверждение регистрации</h1>
+    <form id="user-verify-form"
+          name="verifyForm"
+          ng-submit="sign.actions.verifyEmail();"
+          ng-if="! $root.currentUser.emails[0].verified">
+
+      <div class="form-group field-recovery-form-email">
+        <label class="control-label" for="recovery-form-email">Проверочный код</label>
+        <input type="text" id="recovery-form-email" class="form-control" name="recovery-form[email]" autofocus="autofocus" ng-minlength="40" ng-maxlength="50" ng-model="sign.verify.token">
+        <span class="ng-form-error">Некорректный проверочный код</span>
+      </div>
+
+      <div class="help-block" ng-if="sign.error.length" ng-bind="sign.error"></div>
+      <button type="submit" class="btn btn-primary btn-block" ng-disabled="verifyForm.$invalid">Продолжить</button>
+      <br>
+    </form>
+
+    <div class="user-verify-success" ng-if="$root.currentUser.emails[0].verified">
+      <p>Вы успешно подтвердили регистрацию</p>
+    </div>
+  </div>

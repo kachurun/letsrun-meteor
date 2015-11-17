@@ -18,7 +18,7 @@ angular.module('letsrun')
     .state('user', {
         url: "/user",
         abstract: true,
-        template: '<ui-view/>',
+        templateUrl: "client/partials/user/user.html",
         controller: 'SignController as sign'
       })
       .state('user.signin', {
@@ -29,9 +29,30 @@ angular.module('letsrun')
         url: "/signup",
         templateUrl: "client/partials/user/user.signup.html",
       })
+      .state('user.verify', {
+        url: "/verify/:token",
+        templateUrl: "client/partials/user/user.verify.html",
+        resolve: {
+          "verify": function($meteor, $stateParams) {
+            let token = $stateParams.token;
+            if (token.length === 43)
+              $meteor.verifyEmail(token);
+          }
+        }
+      })
       .state('user.forgot', {
         url: "/forgot",
         templateUrl: "client/partials/user/user.forgot.html",
+      })
+
+      .state('user.restore', {
+        url: "/restore",
+        templateUrl: "client/partials/user/user.restore.html",
+      })
+
+      .state('user.changepwd', {
+        url: "/restore/:token",
+        templateUrl: "client/partials/user/user.changepwd.html"
       })
       .state('user.signout', {
         url: "/signout",

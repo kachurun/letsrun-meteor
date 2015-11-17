@@ -34,7 +34,6 @@ body{
   line-height: 16px;
   margin: 0;
   padding: 0 0 447px;
-  overflow-x: hidden;
 }
 
 /*------------------------containers--------------------------*/
@@ -43,6 +42,7 @@ body{
   padding: 0;
   box-sizing: border-box;
   margin: 0 auto;
+  position: relative;
 }
 
 .container-form{
@@ -210,7 +210,8 @@ button{
   text-align: center;
   box-sizing: border-box;
 
-  &.disabled {
+  &.disabled,
+  &[disabled] {
     background: #bdbdbd;
     border: 1px solid #b1b1b1;
   }
@@ -552,6 +553,27 @@ option{
 // helper
 .help-block {
   color: $color-error;
+  position: relative;
+  top: 15px;
+  display: inline-block;
+  line-height: 20px;
+  padding: 5px 10px;
+  background: #F1F1F1;
+  border-radius: 2px;
+  box-shadow: 0 0 1px #B7B7B7;
+  transition: all 200ms ease-in-out;
+
+  &:before {
+    content: ' ';
+    width: 10px;
+    height: 10px;
+    background: #f1f1f1;
+    position: absolute;
+    bottom: -5px;
+    left: 10%;
+    transform: rotate(45deg);
+  }
+
 }
 
 /*--------------------------radio $ checkboxes-----------------------------*/
@@ -579,9 +601,6 @@ input[type="checkbox"] + label::before {
   margin-right: 10px;
   vertical-align: middle;
   cursor: pointer;
-  position: absolute;
-  left: 0;
-  top: 0;
 }
 
 input[type="checkbox"] + label::before {
@@ -616,11 +635,6 @@ input[type="radio"] + label.inverted::before {
 
 input[type="radio"]:checked + label::before {
   background-color: $color-footer-border;
-}
-
-/*------------------------dirty invalid input--------------------------*/
-input.ng-dirty.ng-invalid {
-  border: 1px solid #ff4747;
 }
 
 

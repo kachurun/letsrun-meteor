@@ -1,5 +1,5 @@
 <!-- sign in -->
-<div class="modal modal-sign-in">
+<div class="modal modal-sign-in" ng-controller="SignController as sign">
   <div class="modal-content">
 
     <div class="modal-header">
@@ -7,27 +7,10 @@
       <button type="button" class="modal-close"></button>
     </div>
 
-    <div class="modal-body">
-      <div id="w2" class="auth-clients">
-        <div class="socials">
-          <a class="btn btn-sign-in  vk" href="/user/security/auth?authclient=vkontakte"><i class="fa fa-vk"></i> Войти с помощью VKontakte</a>
-          <a class="btn btn-sign-in  fb" href="/user/security/auth?authclient=facebook" data-popup-width="860" data-popup-height="480"><i class="fa fa-facebook-official"></i> Войти с помощью Facebook</a> <a class="btn btn-sign-in  instagram" href="/user/security/auth?authclient=instagram"><i class="fa fa-instagram"></i> Войти с помощью Instagram</a> </div>
-      </div>
-      <form id="login-form" action="/user/login" method="post" class="ng-pristine ng-valid" _lpchecked="1">
-        <input type="hidden" name="_csrf" value="LmRKNlR6c05LFjtpeR45PFkiHlMbQwkkAzsIQGIyRChaA3p7PhsiKw==">
-        <h5>Вход через электронную почту</h5>
-        <login-buttons></login-buttons>
-        <input type="email" id="login-form-login" name="login-form[login]" placeholder="Электронная почта" autofocus="autofocus" tabindex="1" style="cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=);">
-        <input type="password" id="login-form-password" name="login-form[password]" placeholder="Пароль" tabindex="2" style="cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=);">
-        <input type="checkbox" id="rememder-me" name="login-form[rememberMe]" value="" tabindex="3">
-        <label for="rememder-me">Запомнить меня</label>
-
-        <button type="submit" class="btn">Войти</button>
-      </form>
-    </div>
+    <div class="modal-body" ng-include="'client/partials/user/user.signin.html'"></div>
 
     <div class="modal-footer">
-      <a id="sign-up-link" href="/user/register">Зарегистрироваться</a> </div>
-
+      <a id="sign-up-link" ui-sref="user.signup">Зарегистрироваться</a>
+    </div>
   </div>
 </div>

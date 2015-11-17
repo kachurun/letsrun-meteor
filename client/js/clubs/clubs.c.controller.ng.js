@@ -5,7 +5,7 @@ angular.module('clubs').controller('ClubsDetailedController', ClubsDetailedContr
 /* @ngInject */
 function ClubsListController($scope, $meteor) {
   var vm = this;
-  vm.list = $meteor.collection(Clubs);
+  vm.list = $meteor.collection(Clubs).subscribe('parties');
 }
 
 // ------------------------------------------------------------------------------ DETAILED

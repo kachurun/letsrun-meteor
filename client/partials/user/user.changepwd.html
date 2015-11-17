@@ -1,0 +1,34 @@
+
+  <div class="help-page changepwd">
+    <h1>Восстановить пароль</h1>
+
+    <form id="password-recovery-form" name="forgotForm" ng-if="sign.restore.state === 0" ng-submit="sign.actions.restorePassword();">
+      <div class="form-group field-recovery-form-email hidden">
+        <label class="control-label" for="recovery-form-email">Код подтверждения</label>
+        <input type="text" id="recovery-form-email" class="form-control" autofocus="autofocus" ng-model="sign.restore.token" disabled="disabled">
+      </div>
+
+      <div class="form-group field-recovery-form-email">
+        <label class="control-label" for="recovery-form-email">Ваш новый пароль</label>
+        <input type="password" id="recovery-form-email" class="form-control" autofocus="autofocus" ng-minlength="6" ng-model="sign.restore.newPassword">
+        <span class="ng-form-error">Минимальная длинна пароля 6 символов</span>
+      </div>
+
+      <div class="help-block" ng-if="sign.error.length" ng-bind="sign.error"></div>
+      <button type="submit" class="btn btn-primary btn-block" ng-disabled="forgotForm.$invalid">Продолжить</button>
+      <br>
+    </form>
+
+    <form id="password-recovery-form" name="forgotForm" ng-if="sign.restore.state === 1">
+      <div class="form-group field-recovery-form-email">
+        <p>Вы успешно сменили свой пароль! Через несколько секунд вы будете перенаправлены на главную страницу.</p>
+      </div>
+    </form>
+
+    <form id="password-recovery-form" name="forgotForm" ng-if="sign.restore.state === -1">
+      <div class="form-group field-recovery-form-email">
+        <p>Непредвиденная ошибка при изменении пароля, попробуйте снова. </p>
+      </div>
+    </form>
+
+  </div>
